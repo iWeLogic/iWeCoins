@@ -20,11 +20,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BACKEND_URL", '"https://api.coingecko.com/api/v3/"'
+            buildConfigField "String", "HISTORY_BASE_URL", '"https://min-api.cryptocompare.com/"'
         }
 
         debug {
             debuggable true
             buildConfigField "String", "BACKEND_URL", '"https://api.coingecko.com/api/v3/"'
+            buildConfigField "String", "HISTORY_BASE_URL", '"https://min-api.cryptocompare.com/"'
         }
     }
     compileOptions {

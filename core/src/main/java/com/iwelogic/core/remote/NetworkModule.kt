@@ -22,16 +22,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(builder: Retrofit.Builder, client: OkHttpClient): Retrofit {
-        return builder
-            .baseUrl(BACKEND_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-    }
-
-    @Provides
-    @Singleton
     fun provideRetrofitBuilder(converterFactory: Converter.Factory): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(converterFactory)

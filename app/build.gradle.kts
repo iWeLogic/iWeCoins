@@ -45,6 +45,7 @@ dependencies {
 
     implementation(project(Modules.mainPresentation))
     implementation(project(Modules.coinsData))
+    implementation(project(Modules.newsData))
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
