@@ -3,5 +3,8 @@ plugins {
 }
 
 dependencies {
+
     "implementation"(Coroutines.coroutines)
+
+    "testImplementation"(Testing.junit4)
 }
