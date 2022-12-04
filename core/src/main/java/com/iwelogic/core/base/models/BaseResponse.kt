@@ -11,5 +11,5 @@ open class BaseResponse(
     val code: ErrorCode? = null,
 
     @field:SerializedName("success")
-    val success: Int? = null
+    val success: Boolean? = null
 )

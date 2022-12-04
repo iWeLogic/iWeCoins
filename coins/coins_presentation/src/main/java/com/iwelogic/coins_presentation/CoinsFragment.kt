@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.iwelogic.coins_presentation.databinding.FragmentCoinsBinding
 import com.iwelogic.core.base.mvvm.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,5 +23,21 @@ class CoinsFragment : BaseFragment<CoinsViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUi()
+        lifecycleScope.launchWhenCreated {
+            viewModel.coins.collect {
+                (binding.list.adapter as CoinAdapter).submitList(it)
+            }
+        }
+    }
+
+    private fun initUi() {
+        binding.list.adapter = CoinAdapter {
+            viewModel.onClickCoin(it)
+        }
+
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.onReload()
+        }
     }
 }

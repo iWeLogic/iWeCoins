@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <com.iwelogic.core.views.SwipeRefreshLayoutWithoutIndicator
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="No connection to server"
-                android:textSize="20sp" />
+    </com.iwelogic.core.views.SwipeRefreshLayoutWithoutIndicator>
 
-        </LinearLayout>
+    <include layout="@layout/layout_progress" />
 
-    </ScrollView>
+    <include layout="@layout/layout_error" />
 
 </FrameLayout>

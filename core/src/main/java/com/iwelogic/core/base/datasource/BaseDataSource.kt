@@ -13,14 +13,14 @@ open class BaseDataSource {
         return try {
             val result = request.invoke()
             if (result.isSuccessful) {
-                if ((result.body() as BaseResponse).success == 1) {
-                    Result.success(result.body()!!)
-                } else {
+                if (result.body() is BaseResponse && (result.body() as BaseResponse).success != true) {
                     val dataSourceFailure = DataSourceFailure(
                         errorCode = (result.body() as BaseResponse).code!!,
                         failureMessage = (result.body() as BaseResponse).message
                     )
                     Result.failure(dataSourceFailure)
+                } else {
+                    Result.success(result.body()!!)
                 }
             } else {
                 return try {

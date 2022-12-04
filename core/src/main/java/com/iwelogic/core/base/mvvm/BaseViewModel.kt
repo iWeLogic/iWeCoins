@@ -1,29 +1,41 @@
 package com.iwelogic.core.base.mvvm
 
-import android.content.Context
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.iwelogic.core.utils.SingleLiveEvent
-import java.lang.ref.WeakReference
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 
-open class BaseViewModel() : ViewModel() {
+abstract class BaseViewModel() : ViewModel() {
 
-    var progress: MutableLiveData<Boolean> = MutableLiveData(false)
-    var error: MutableLiveData<String> = MutableLiveData("")
-    val close: SingleLiveEvent<Boolean> = SingleLiveEvent()
-    val showToast: SingleLiveEvent<String> = SingleLiveEvent()
+    protected val _progress = MutableStateFlow(false)
+    val progress: StateFlow<Boolean> = _progress
+
+    protected val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error
+
+    private val toastChannel = Channel<String>(capacity = 0, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+    val toast = toastChannel.receiveAsFlow()
+
+    private val closeChannel = Channel<Boolean>(capacity = 0, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+    val close = closeChannel.receiveAsFlow()
 
     fun onClickClose() {
-        close.invoke(true)
+        viewModelScope.launch {
+            closeChannel.send(true)
+        }
     }
 
-    fun onClickRetry() {
-        onReload()
+    fun showToast(message: String) {
+        viewModelScope.launch {
+            toastChannel.send(message)
+        }
     }
 
     open fun onReload() {
 
     }
-
-    fun getBase(): BaseViewModel = this
 }

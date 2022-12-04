@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 
 open class BaseDialog<VM : BaseViewModel> : DialogFragment() {
@@ -18,8 +19,11 @@ open class BaseDialog<VM : BaseViewModel> : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.close.observe(viewLifecycleOwner) {
-            findNavController().popBackStack()
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.close.collect {
+                findNavController().popBackStack()
+            }
         }
     }
 }
