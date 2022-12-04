@@ -1,7 +1,7 @@
-apply {
-    from("$rootDir/base-module.gradle")
+plugins {
+    id("kotlin")
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
+    "implementation"(Coroutines.coroutines)
 }

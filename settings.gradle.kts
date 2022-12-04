@@ -15,10 +15,10 @@ dependencyResolutionManagement {
 rootProject.name = "iWeCoins"
 include (":app")
 include(":main:main_presentation")
-include ':core'
-include ':coins:coins_presentation'
-include ':coins:coins_data'
-include ':coins:coins_domain'
-include ':news:news_presentation'
-include ':news:news_domain'
-include ':news:news_data'
+include(":core")
+include(":coins:coins_presentation")
+include(":coins:coins_data")
+include(":coins:coins_domain")
+include(":news:news_presentation")
+include(":news:news_domain")
+include(":news:news_data")

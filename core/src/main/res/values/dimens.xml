@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_size">50dp</dimen>
+    <dimen name="default_size">16dp</dimen>
+    <dimen name="half_default_size">8dp</dimen>
+    <dimen name="quarter_default_size">4dp</dimen>
+</resources>
