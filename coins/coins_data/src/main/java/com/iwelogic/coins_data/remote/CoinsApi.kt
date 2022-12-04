@@ -1,6 +1,6 @@
 package com.iwelogic.coins_data.remote
 
-import com.iwelogic.crypto_coins.models.CoinDto
+import com.iwelogic.coins_data.dto.CoinDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,7 +1,7 @@
 package com.iwelogic.coins_data.mapper
 
 import com.iwelogic.coins_domain.models.Coin
-import com.iwelogic.crypto_coins.models.CoinDto
+import com.iwelogic.coins_data.dto.CoinDto
 
 fun CoinDto.toCoin(): Coin {
     return Coin(

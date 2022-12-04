@@ -1,7 +1,10 @@
-apply {
-    from("$rootDir/data-module.gradle")
+plugins {
+    id("kotlin")
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
+
+    "implementation"(Coroutines.coroutines)
+
+    "testImplementation"(Testing.junit4)
 }

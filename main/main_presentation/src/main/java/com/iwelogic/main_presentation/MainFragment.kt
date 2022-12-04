@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.iwelogic.core.base.mvvm.BaseFragment
 import com.iwelogic.main_presentation.databinding.FragmentMainBinding
 

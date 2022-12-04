@@ -1,4 +1,4 @@
-package com.iwelogic.crypto_coins.models
+package com.iwelogic.coins_data.dto
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
