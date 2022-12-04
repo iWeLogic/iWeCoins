@@ -41,16 +41,14 @@ dependencies {
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.fragment:fragment-ktx:1.4.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.2")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation(Google.material)
+    implementation(AndroidX.fragmentKtx)
+    implementation(AndroidX.navigationFragment)
+    implementation(AndroidX.navigationUi)
+    implementation(AndroidX.legacy)
 
-
-    implementation("com.github.bumptech.glide:glide:4.12.0")
-    kapt("com.github.bumptech.glide:compiler:4.12.0")
-
+    implementation(Glide.glide)
+    kapt(Glide.glideCompiler)
 
     kapt DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid

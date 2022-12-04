@@ -39,6 +39,12 @@ android {
 }
 
 dependencies {
+
+    implementation Retrofit.okHttp
+    implementation Retrofit.retrofit
+    implementation Retrofit.okHttpLoggingInterceptor
+    implementation Retrofit.gsonConverter
+
     kapt DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid
 

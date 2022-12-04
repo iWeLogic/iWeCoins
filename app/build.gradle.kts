@@ -48,14 +48,7 @@ dependencies {
 
     implementation(AndroidX.coreKtx)
     implementation(AndroidX.appCompat)
-    implementation("com.google.android.material:material:1.6.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.navigation:navigation-runtime-ktx:2.5.2")
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.4.2")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.4.2")
-    implementation ("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation ("com.google.android.material:material:1.6.1")
-
+    implementation(AndroidX.navigationFragment)
 
     implementation(DaggerHilt.hiltAndroid)
     kapt(DaggerHilt.hiltCompiler)
