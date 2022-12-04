@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom"
+    app:startDestination="@id/coins">
+
+    <navigation
+        android:id="@+id/coins"
+        app:startDestination="@id/coinsFragment">
+        <fragment
+            android:id="@+id/coinsFragment"
+            android:name="com.iwelogic.coins_presentation.CoinsFragment"
+            android:label="AppsFragment" />
+    </navigation>
+
+    <navigation
+        android:id="@+id/news"
+        app:startDestination="@id/newsFragment">
+        <fragment
+            android:id="@+id/newsFragment"
+            android:name="com.iwelogic.news_presentation.NewsFragment"
+            android:label="AppsFragment" />
+    </navigation>
+
+
+</navigation>
