@@ -9,7 +9,7 @@
         app:startDestination="@id/coinsFragment">
         <fragment
             android:id="@+id/coinsFragment"
-            android:name="com.iwelogic.coins_presentation.CoinsFragment"
+            android:name="com.iwelogic.coins_presentation.ui.list.CoinsFragment"
             android:label="AppsFragment" />
     </navigation>
 

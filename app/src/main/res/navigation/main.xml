@@ -4,11 +4,19 @@
     android:id="@+id/main"
     app:startDestination="@id/mainFragment">
 
-
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.iwelogic.main_presentation.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment">
+    </fragment>
 
+    <fragment
+        android:id="@+id/coinDetailsFragment"
+        android:name="com.iwelogic.coins_presentation.ui.details.CoinDetailsFragment"
+        android:label="CoinDetailsFragment">
+
+        <deepLink app:uri="android-app://androidx.navigation/coinDetailsFragment" />
+
+    </fragment>
 
 </navigation>

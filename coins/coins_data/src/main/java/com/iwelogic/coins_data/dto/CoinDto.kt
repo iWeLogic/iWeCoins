@@ -1,10 +1,7 @@
 package com.iwelogic.coins_data.dto
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 class CoinDto(
 
     @SerializedName("price_change_percentage_24h")
@@ -27,5 +24,4 @@ class CoinDto(
 
     @SerializedName("current_price")
     val currentPrice: Double? = null
-
-) : Parcelable
+)

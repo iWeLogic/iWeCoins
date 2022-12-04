@@ -1,10 +1,10 @@
-package com.iwelogic.coins_data.mapper
+package com.iwelogic.coins_presentation
 
 import com.iwelogic.coins_domain.models.CoinDomain
-import com.iwelogic.coins_data.dto.CoinDto
+import com.iwelogic.coins_presentation.models.Coin
 
-fun CoinDto.toCoinDomain(): CoinDomain {
-    return CoinDomain(
+fun CoinDomain.toCoin(): Coin {
+    return Coin(
         priceChangePercentage24h = priceChangePercentage24h,
         symbol = symbol,
         image = image,

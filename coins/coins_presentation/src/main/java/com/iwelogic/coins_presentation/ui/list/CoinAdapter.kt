@@ -1,4 +1,4 @@
-package com.iwelogic.coins_presentation
+package com.iwelogic.coins_presentation.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.iwelogic.coins_domain.models.Coin
+import com.iwelogic.coins_presentation.R
 import com.iwelogic.coins_presentation.databinding.ItemCoinBinding
+import com.iwelogic.coins_presentation.models.Coin
 
 class CoinAdapter(private val onClick: (Coin) -> Unit) : ListAdapter<Coin, RecyclerView.ViewHolder>(CoinComparator) {
 

@@ -1,6 +1,6 @@
 package com.iwelogic.coins_domain.models
 
-data class Coin(
+data class CoinDomain(
     val priceChangePercentage24h: Double? = null,
     val symbol: String? = null,
     val image: String? = null,
