@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">iWeCoins</string>
+
+    <string name="onboarding_title_1">1</string>
+    <string name="onboarding_title_2">2</string>
+    <string name="onboarding_title_3">3</string>
+    <string name="onboarding_title_4">4</string>
+    <string name="onboarding_title_5">5</string>
+
+    <string name="onboarding_text_1">The official app of the Vilnius 700 anniversary movie</string>
+    <string name="onboarding_text_2">A movie created by all us, citizens, tourists, and lovers of our beautiful capital.</string>
+    <string name="onboarding_text_3">Upload moments, stories or memories while exploring at the same time what other people is doing.</string>
+    <string name="onboarding_text_4">Through the creation process you will be able to earn rewards for your contributors. Although the biggest reward will be to be selected by our renowned director John Doe</string>
+    <string name="onboarding_text_5">Once the movie is ready we will be premiering it as part of the Vilnius 700 anniversary celebrations in January 2023</string>
+
+    <string name="str_continue">CONTINUE</string>
+    <string name="skip">SKIP</string>
+
+</resources>
