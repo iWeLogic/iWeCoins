@@ -1,7 +1,8 @@
 apply {
-    from("$rootDir/compose-module.gradle")
+    from("$rootDir/presentation-module.gradle")
 }
 
 dependencies {
     "implementation"(project(Modules.core))
+    "implementation"(project(Modules.coinsPresentation))
 }

@@ -19,6 +19,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BACKEND_URL", '"https://api.coingecko.com/api/v3/"'
+            buildConfigField "String", "HISTORY_BASE_URL", '"https://min-api.cryptocompare.com/"'
+        }
+
+        debug {
+            debuggable true
+            buildConfigField "String", "BACKEND_URL", '"https://api.coingecko.com/api/v3/"'
+            buildConfigField "String", "HISTORY_BASE_URL", '"https://min-api.cryptocompare.com/"'
         }
     }
     compileOptions {
@@ -33,6 +41,12 @@ android {
 }
 
 dependencies {
+
+    implementation Retrofit.okHttp
+    implementation Retrofit.retrofit
+    implementation Retrofit.okHttpLoggingInterceptor
+    implementation Retrofit.gsonConverter
+
     kapt DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid
 
@@ -41,7 +55,6 @@ dependencies {
     testImplementation Testing.truth
     testImplementation Testing.coroutines
     testImplementation Testing.turbine
-    testImplementation Testing.composeUiTest
     testImplementation Testing.mockk
     testImplementation Testing.mockWebServer
 
@@ -50,7 +63,6 @@ dependencies {
     androidTestImplementation Testing.truth
     androidTestImplementation Testing.coroutines
     androidTestImplementation Testing.turbine
-    androidTestImplementation Testing.composeUiTest
     androidTestImplementation Testing.mockk
     androidTestImplementation Testing.mockWebServer
     androidTestImplementation Testing.hiltTesting

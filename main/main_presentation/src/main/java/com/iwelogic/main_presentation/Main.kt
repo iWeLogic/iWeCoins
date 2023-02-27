@@ -14,6 +14,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.iwelogic.coins_presentation.ui.list.CoinsScreen
 
 @Composable
 fun MainScreen() {
@@ -34,17 +35,12 @@ fun MainScreen() {
 fun Navigation(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Home.route) {
         composable(NavigationItem.Home.route) {
-            NewsScreen()
+            CoinsScreen()
         }
         composable(NavigationItem.Settings.route) {
             SettingsScreen()
         }
     }
-}
-
-@Composable
-fun NewsScreen() {
-    Text(text = "NewsScreen", fontSize = 18.sp)
 }
 
 @Composable
