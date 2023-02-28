@@ -9,4 +9,8 @@ object Modules {
     const val coinsData = ":coins:coins_data"
     const val coinsDomain = ":coins:coins_domain"
     const val coinsPresentation = ":coins:coins_presentation"
+
+    const val newsData = ":news:news_data"
+    const val newsDomain = ":news:news_domain"
+    const val newsPresentation = ":news:news_presentation"
 }

@@ -14,7 +14,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import com.iwelogic.core.BuildConfig.BACKEND_URL
 
 @InstallIn(SingletonComponent::class)
 @Module

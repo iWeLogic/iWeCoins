@@ -3,16 +3,15 @@ package com.iwelogic.main_presentation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.iwelogic.coins_presentation.ui.list.CoinsScreen
+import com.iwelogic.news_presentation.ui.list.NewsScreen
 
 @Composable
 fun MainScreen() {
@@ -34,13 +33,8 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Coins.route) {
             CoinsScreen(NavigationItem.Coins.title)
         }
-        composable(NavigationItem.Settings.route) {
-            SettingsScreen()
+        composable(NavigationItem.News.route) {
+            NewsScreen(NavigationItem.Coins.title)
         }
     }
-}
-
-@Composable
-fun SettingsScreen() {
-    Text(text = "SettingsScreen", fontSize = 18.sp)
 }

@@ -1,10 +1,10 @@
 package com.iwelogic.coins_data.di
 
+import com.iwelogic.coins_data.BuildConfig.BACKEND_URL
 import com.iwelogic.coins_data.datasource.CoinsDataSource
 import com.iwelogic.coins_data.remote.CoinsApi
 import com.iwelogic.coins_data.repository.CoinsRepositoryImp
 import com.iwelogic.coins_domain.repository.CoinsRepository
-import com.iwelogic.core.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +22,7 @@ object CoinsDataModule {
     @Singleton
     fun provideCoinsApi(builder: Retrofit.Builder, client: OkHttpClient): CoinsApi {
         return builder
-            .baseUrl(BuildConfig.BACKEND_URL)
+            .baseUrl(BACKEND_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
