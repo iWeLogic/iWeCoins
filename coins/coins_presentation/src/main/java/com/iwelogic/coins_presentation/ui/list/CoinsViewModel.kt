@@ -19,8 +19,8 @@ class CoinsViewModel @Inject constructor(
     private val coinsUseCase: CoinsUseCase
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<CoinsUiState>(CoinsUiState.Loading)
-    val state: StateFlow<CoinsUiState> = _state
+    private val _state = MutableStateFlow<CoinsState>(CoinsState.Loading)
+    val state: StateFlow<CoinsState> = _state
 
     private val openDetailsChannel = Channel<Coin>(capacity = 0, onBufferOverflow = BufferOverflow.DROP_OLDEST)
     val openDetails = openDetailsChannel.receiveAsFlow()
@@ -29,15 +29,15 @@ class CoinsViewModel @Inject constructor(
         onReload()
     }
 
-    fun onReload() {
+    private fun onReload() {
         viewModelScope.launch {
-            _state.emit(CoinsUiState.Loading)
+            _state.emit(CoinsState.Loading)
             coinsUseCase.getCoins()
                 .onSuccess {
-                    _state.emit(CoinsUiState.ScreenData(it.map { item -> item.toCoin() }))
+                    _state.emit(CoinsState.ScreenData(it.map { item -> item.toCoin() }))
                 }
                 .onFailure {
-                    _state.emit(CoinsUiState.Error)
+                    _state.emit(CoinsState.Error)
                 }
         }
     }
