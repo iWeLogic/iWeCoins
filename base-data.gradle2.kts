@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+
     namespace = "com.iwelogic.coins_data"
 
     compileSdk = ProjectConfig.compileSdk
@@ -13,8 +14,26 @@ android {
     defaultConfig {
         minSdk = ProjectConfig.minSdk
         targetSdk = ProjectConfig.targetSdk
-    }
+        versionCode = ProjectConfig.versionCode
+        versionName = ProjectConfig.versionName
 
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+    buildTypes {
+
+        release {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "BACKEND_URL", "\"https://api.coingecko.com/api/v3/\"")
+            buildConfigField("String", "HISTORY_BASE_URL", "\"https://min-api.cryptocompare.com/\"")
+        }
+
+        debug {
+            buildConfigField("String", "BACKEND_URL", "\"https://api.coingecko.com/api/v3/\"")
+            buildConfigField("String", "HISTORY_BASE_URL", "\"https://min-api.cryptocompare.com/\"")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

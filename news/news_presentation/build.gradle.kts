@@ -1,8 +1,12 @@
+plugins {
+    id("com.android.library")
+}
+
 apply {
-    from("$rootDir/presentation-module.gradle")
+    from("$rootDir/base-presentation.gradle")
 }
 
 dependencies {
-    "implementation"(project(Modules.core))
-    "implementation"(project(Modules.newsDomain))
+    implementation(project(Modules.core))
+    implementation(project(Modules.newsDomain))
 }
