@@ -1,4 +1,4 @@
-package com.iwelogic.coins.navigation
+    package com.iwelogic.coins.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

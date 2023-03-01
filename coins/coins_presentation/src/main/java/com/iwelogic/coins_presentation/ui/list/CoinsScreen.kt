@@ -1,5 +1,6 @@
 package com.iwelogic.coins_presentation.ui.list
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -32,7 +33,11 @@ fun CoinsScreen(
     val uiState by viewModel.state.collectAsState()
     val scrollState = rememberLazyListState()
 
-    Column {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
         TopAppBar(
             title = {
                 Text(

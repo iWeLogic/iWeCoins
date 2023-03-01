@@ -7,6 +7,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.iwelogic.core.utils.isTrue
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
@@ -14,7 +15,6 @@ fun BottomNavigationBar(navController: NavController) {
         NavigationItem.Coins,
         NavigationItem.News
     )
-
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     BottomNavigation(
@@ -28,9 +28,17 @@ fun BottomNavigationBar(navController: NavController) {
                 selectedContentColor = MaterialTheme.colors.onPrimary,
                 unselectedContentColor = MaterialTheme.colors.onPrimary.copy(0.5f),
                 alwaysShowLabel = true,
-                selected = navBackStackEntry?.destination?.hierarchy?.any { it.route == item.route } ?: true,
+                selected = navBackStackEntry?.destination?.hierarchy?.any { it.route == item.route }.isTrue(),
                 onClick = {
-                    navController.navigate(item.route) {
+                    navController.navigate(
+                        item.route
+                    ) {
+                        anim {
+                            enter = R.anim.empty_anim
+                            exit = R.anim.empty_anim
+                            popEnter = R.anim.empty_anim
+                            popExit = R.anim.empty_anim
+                        }
                         navController.graph.startDestinationRoute?.let { route ->
                             popUpTo(route) {
                                 saveState = true
