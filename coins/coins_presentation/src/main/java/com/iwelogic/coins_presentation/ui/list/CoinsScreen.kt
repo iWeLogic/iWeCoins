@@ -1,6 +1,7 @@
 package com.iwelogic.coins_presentation.ui.list
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import coil.compose.SubcomposeAsyncImage
 import com.iwelogic.coins_presentation.models.Coin
 import com.iwelogic.core.utils.orZero
@@ -28,6 +30,7 @@ import com.iwelogic.core.utils.twoDigitsAfterDot
 @Composable
 fun CoinsScreen(
     title: String,
+    navHostController: NavHostController,
     viewModel: CoinsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.state.collectAsState()
@@ -74,7 +77,9 @@ fun CoinsScreen(
                         state = scrollState
                     ) {
                         items(state.coins) { item ->
-                            CoinItem(coin = item)
+                            CoinItem(coin = item) {
+                                navHostController.navigate("coinDetails")
+                            }
                         }
                     }
                 }
@@ -84,40 +89,40 @@ fun CoinsScreen(
 }
 
 @Composable
-fun CoinItem(coin: Coin) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp, 4.dp, 16.dp, 4.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        SubcomposeAsyncImage(
+fun CoinItem(coin: Coin, onClick: () -> Unit) {
+        Row(
             modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape),
-            model = coin.image,
-            loading = {
-                CircularProgressIndicator()
-            },
-            contentDescription = null
-        )
-        Column(
-            modifier = Modifier
-                .weight(1.0f)
-                .padding(16.dp, 0.dp, 0.dp, 0.dp),
+                .fillMaxWidth()
+                .padding(16.dp, 4.dp, 16.dp, 4.dp)
+                .clickable(onClick = onClick)
         ) {
+            SubcomposeAsyncImage(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape),
+                model = coin.image,
+                loading = {
+                    CircularProgressIndicator()
+                },
+                contentDescription = null
+            )
+            Column(
+                modifier = Modifier
+                    .weight(1.0f)
+                    .padding(16.dp, 0.dp, 0.dp, 0.dp),
+            ) {
+                Text(
+                    text = coin.name.orEmpty(),
+                    color = MaterialTheme.colors.onBackground
+                )
+                Text(
+                    color = if (coin.priceChange24h.orZero() < 0.0) Color.Red else Color.Green,
+                    text = coin.priceChange24h.twoDigitsAfterDot()
+                )
+            }
             Text(
-                text = coin.name.orEmpty(),
+                text = "$${String.format("%.4f", coin.currentPrice.orZero())}",
                 color = MaterialTheme.colors.onBackground
             )
-            Text(
-                color = if (coin.priceChange24h.orZero() < 0.0) Color.Red else Color.Green,
-                text = coin.priceChange24h.twoDigitsAfterDot()
-            )
         }
-        Text(
-            text = "$${String.format("%.4f", coin.currentPrice.orZero())}",
-            color = MaterialTheme.colors.onBackground
-        )
-    }
 }

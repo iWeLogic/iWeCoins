@@ -33,12 +33,6 @@ fun BottomNavigationBar(navController: NavController) {
                     navController.navigate(
                         item.route
                     ) {
-                        anim {
-                            enter = R.anim.empty_anim
-                            exit = R.anim.empty_anim
-                            popEnter = R.anim.empty_anim
-                            popExit = R.anim.empty_anim
-                        }
                         navController.graph.startDestinationRoute?.let { route ->
                             popUpTo(route) {
                                 saveState = true

@@ -11,6 +11,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -19,7 +20,7 @@ import com.iwelogic.news_presentation.ui.list.NewsScreen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(navHostController: NavHostController) {
     val navController = rememberAnimatedNavController()
     Scaffold(
         bottomBar = { BottomNavigationBar(navController) },
@@ -32,65 +33,33 @@ fun MainScreen() {
                 AnimatedNavHost(navController, startDestination = NavigationItem.Coins.route) {
                     composable(NavigationItem.Coins.route,
                         enterTransition = {
-                            when (initialState.destination.route) {
-                                "Red" ->
-                                    slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                                else -> slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                            }
+                            slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
                         },
                         exitTransition = {
-                            when (targetState.destination.route) {
-                                "Red" ->
-                                    slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                                else -> slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                            }
+                            slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
                         },
                         popEnterTransition = {
-                            when (initialState.destination.route) {
-                                "Red" ->
-                                    slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                                else ->  slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                            }
+                            slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
                         },
                         popExitTransition = {
-                            when (targetState.destination.route) {
-                                "Red" ->
-                                    slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                                else ->  slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                            }
+                            slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
                         }
 
                     ) {
-                        CoinsScreen(NavigationItem.Coins.title)
+                        CoinsScreen(NavigationItem.Coins.title, navHostController)
                     }
                     composable(NavigationItem.News.route,
                         enterTransition = {
-                            when (initialState.destination.route) {
-                                "Red" ->
-                                    slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                                else -> slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                            }
+                            slideIntoContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
                         },
                         exitTransition = {
-                            when (targetState.destination.route) {
-                                "Red" ->
-                                    slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                                else -> slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
-                            }
+                            slideOutOfContainer(AnimatedContentScope.SlideDirection.Left, animationSpec = tween(0))
                         },
                         popEnterTransition = {
-                            when (initialState.destination.route) {
-                                "Red" ->
-                                    slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                                else ->  slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                            }
+                            slideIntoContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
                         },
                         popExitTransition = {
-                            when (targetState.destination.route) {
-                                "Red" ->
-                                    slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                                else ->  slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
-                            }
+                            slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
                         }
                     ) {
                         NewsScreen(NavigationItem.News.title)

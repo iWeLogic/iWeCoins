@@ -74,6 +74,8 @@ dependencies {
     implementation("androidx.navigation:navigation-runtime-ktx:2.5.2")
     implementation("com.google.accompanist:accompanist-pager:0.23.1")
 
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.28.0")
+
     implementation(DaggerHilt.hiltAndroid)
     kapt(DaggerHilt.hiltCompiler)
 
