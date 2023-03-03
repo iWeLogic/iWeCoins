@@ -5,8 +5,11 @@ import androidx.lifecycle.viewModelScope
 import com.iwelogic.news_domain.models.News
 import com.iwelogic.news_domain.use_case.NewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,6 +20,9 @@ class NewsViewModel @Inject constructor(
 
     private val _state = MutableStateFlow<NewsState>(NewsState.Loading)
     val state: StateFlow<NewsState> = _state
+
+    private val _event = Channel<NewsEvent>(capacity = 0, onBufferOverflow = BufferOverflow.DROP_OLDEST)
+    val event = _event.receiveAsFlow()
 
     init {
         onReload()
@@ -36,7 +42,9 @@ class NewsViewModel @Inject constructor(
         }
     }
 
-    fun onClickCoin(item: News) {
-
+    fun onClickNews(item: News) {
+        viewModelScope.launch {
+            _event.send(NewsEvent.OpenNewsDetails(item))
+        }
     }
 }

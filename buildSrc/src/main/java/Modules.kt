@@ -1,6 +1,7 @@
 object Modules {
     const val app = ":app"
     const val core = ":core"
+    const val coreUi = ":core_ui"
 
     const val mainData = ":main:main_data"
     const val mainDomain = ":main:main_domain"

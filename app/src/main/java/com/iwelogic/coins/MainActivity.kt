@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.iwelogic.coins.navigation.AppNavigation
-import com.iwelogic.coins.navigation.Routes
+import com.iwelogic.core_ui.Route
 import com.iwelogic.coins.theme.iWeCoinsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,7 +17,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             iWeCoinsTheme {
-                AppNavigation(navController = rememberAnimatedNavController(), Routes.Main)
+                AppNavigation(navController = rememberAnimatedNavController(), Route.MAIN)
             }
         }
     }

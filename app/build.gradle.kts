@@ -53,6 +53,7 @@ android {
 dependencies {
 
     implementation(project(Modules.core))
+    implementation(project(Modules.coreUi))
     implementation(project(Modules.mainPresentation))
     implementation(project(Modules.coinsData))
     implementation(project(Modules.coinsPresentation))

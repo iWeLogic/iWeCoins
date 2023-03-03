@@ -21,16 +21,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import coil.compose.SubcomposeAsyncImage
 import com.iwelogic.coins_presentation.models.Coin
 import com.iwelogic.core.utils.orZero
 import com.iwelogic.core.utils.twoDigitsAfterDot
+import com.iwelogic.core_ui.Route
 
 @Composable
 fun CoinsScreen(
     title: String,
-    navHostController: NavHostController,
+    navigate: (String) -> Unit,
     viewModel: CoinsViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.state.collectAsState()
@@ -78,7 +78,7 @@ fun CoinsScreen(
                     ) {
                         items(state.coins) { item ->
                             CoinItem(coin = item) {
-                                navHostController.navigate("coinDetails")
+                                navigate(Route.COIN_DETAILS)
                             }
                         }
                     }
@@ -90,39 +90,39 @@ fun CoinsScreen(
 
 @Composable
 fun CoinItem(coin: Coin, onClick: () -> Unit) {
-        Row(
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp, 4.dp, 16.dp, 4.dp)
+            .clickable(onClick = onClick)
+    ) {
+        SubcomposeAsyncImage(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp, 4.dp, 16.dp, 4.dp)
-                .clickable(onClick = onClick)
+                .size(40.dp)
+                .clip(CircleShape),
+            model = coin.image,
+            loading = {
+                CircularProgressIndicator()
+            },
+            contentDescription = null
+        )
+        Column(
+            modifier = Modifier
+                .weight(1.0f)
+                .padding(16.dp, 0.dp, 0.dp, 0.dp),
         ) {
-            SubcomposeAsyncImage(
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape),
-                model = coin.image,
-                loading = {
-                    CircularProgressIndicator()
-                },
-                contentDescription = null
-            )
-            Column(
-                modifier = Modifier
-                    .weight(1.0f)
-                    .padding(16.dp, 0.dp, 0.dp, 0.dp),
-            ) {
-                Text(
-                    text = coin.name.orEmpty(),
-                    color = MaterialTheme.colors.onBackground
-                )
-                Text(
-                    color = if (coin.priceChange24h.orZero() < 0.0) Color.Red else Color.Green,
-                    text = coin.priceChange24h.twoDigitsAfterDot()
-                )
-            }
             Text(
-                text = "$${String.format("%.4f", coin.currentPrice.orZero())}",
+                text = coin.name.orEmpty(),
                 color = MaterialTheme.colors.onBackground
             )
+            Text(
+                color = if (coin.priceChange24h.orZero() < 0.0) Color.Red else Color.Green,
+                text = coin.priceChange24h.twoDigitsAfterDot()
+            )
         }
+        Text(
+            text = "$${String.format("%.4f", coin.currentPrice.orZero())}",
+            color = MaterialTheme.colors.onBackground
+        )
+    }
 }

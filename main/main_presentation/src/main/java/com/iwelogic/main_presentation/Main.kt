@@ -11,16 +11,16 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.iwelogic.coins_presentation.ui.list.CoinsScreen
+import com.iwelogic.news_presentation.ui.details.NewsDetailsScreen
 import com.iwelogic.news_presentation.ui.list.NewsScreen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun MainScreen(navHostController: NavHostController) {
+fun MainScreen(navigate: (String) -> Unit) {
     val navController = rememberAnimatedNavController()
     Scaffold(
         bottomBar = { BottomNavigationBar(navController) },
@@ -46,7 +46,7 @@ fun MainScreen(navHostController: NavHostController) {
                         }
 
                     ) {
-                        CoinsScreen(NavigationItem.Coins.title, navHostController)
+                        CoinsScreen(NavigationItem.Coins.title, navigate)
                     }
                     composable(NavigationItem.News.route,
                         enterTransition = {
@@ -62,7 +62,7 @@ fun MainScreen(navHostController: NavHostController) {
                             slideOutOfContainer(AnimatedContentScope.SlideDirection.Right, animationSpec = tween(0))
                         }
                     ) {
-                        NewsScreen(NavigationItem.News.title)
+                        NewsScreen(NavigationItem.News.title, navigate)
                     }
                 }
             }

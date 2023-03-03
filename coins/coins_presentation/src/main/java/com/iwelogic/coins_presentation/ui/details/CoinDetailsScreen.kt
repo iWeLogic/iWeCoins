@@ -12,12 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
+import com.iwelogic.core_ui.Route
 
 @Composable
 fun CoinDetailsScreen(
-    title: String,
-    navHostController: NavHostController,
+    navigate: (String) -> Unit,
     viewModel: CoinsDetailsViewModel = hiltViewModel()
 ) {
     Column(
@@ -28,14 +27,16 @@ fun CoinDetailsScreen(
         TopAppBar(
             title = {
                 Text(
-                    modifier = Modifier.fillMaxWidth().padding(end = 52.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 52.dp),
                     textAlign = TextAlign.Center,
-                    text = title,
+                    text = "Coin details",
                     style = MaterialTheme.typography.h3
                 )
             },
-            navigationIcon ={
-                IconButton(onClick = { navHostController.navigateUp() }) {
+            navigationIcon = {
+                IconButton(onClick = { navigate(Route.NAVIGATION_UP) }) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
                         contentDescription = "Back"
@@ -52,7 +53,7 @@ fun CoinDetailsScreen(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                text = title,
+                text = "Coin details",
                 style = MaterialTheme.typography.h3
             )
         }

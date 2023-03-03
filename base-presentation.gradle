@@ -44,6 +44,8 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-pager:0.23.1")
     implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation(project(Modules.coreUi))
+
     implementation Compose.compiler
     implementation Compose.ui
     implementation Compose.uiTooling
