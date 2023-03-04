@@ -1,4 +1,4 @@
-package com.iwelogic.news_domain.models
+package com.iwelogic.news_presentation.models
 
 data class SourceInfo(
     var name: String? = null,

@@ -38,6 +38,7 @@ open class BaseDataSource {
                 }
             }
         } catch (e: Throwable) {
+            e.printStackTrace()
             when (e) {
                 is UnknownHostException -> {
                     val dataSourceFailure = DataSourceFailure(

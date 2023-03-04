@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iwelogic.coins_domain.use_case.CoinsUseCase
 import com.iwelogic.coins_presentation.models.Coin
-import com.iwelogic.coins_presentation.toCoin
+import com.iwelogic.coins_presentation.mapper.toCoin
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel

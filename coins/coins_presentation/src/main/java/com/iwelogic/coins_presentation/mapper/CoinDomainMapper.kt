@@ -1,4 +1,4 @@
-package com.iwelogic.coins_presentation
+package com.iwelogic.coins_presentation.mapper
 
 import com.iwelogic.coins_domain.models.CoinDomain
 import com.iwelogic.coins_presentation.models.Coin

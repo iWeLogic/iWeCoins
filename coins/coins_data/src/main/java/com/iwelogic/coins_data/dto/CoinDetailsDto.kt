@@ -1,9 +1,9 @@
 package com.iwelogic.coins_data.dto
 
-class CoinDetailsDto {
-    var description = Description()
-}
+import com.google.gson.annotations.SerializedName
 
-class Description {
-    var en = ""
-}
+data class CoinDetailsDto(
+
+    @SerializedName("description")
+    var description: CoinDescriptionDto? = null
+)

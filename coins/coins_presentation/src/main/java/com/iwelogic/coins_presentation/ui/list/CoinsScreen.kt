@@ -116,7 +116,7 @@ fun CoinItem(coin: Coin, onClick: () -> Unit) {
                 color = MaterialTheme.colors.onBackground
             )
             Text(
-                color = if (coin.priceChange24h.orZero() < 0.0) Color.Red else Color.Green,
+                color = if (coin.priceChange24h.orZero() < 0.0f) Color.Red else Color.Green,
                 text = coin.priceChange24h.twoDigitsAfterDot()
             )
         }

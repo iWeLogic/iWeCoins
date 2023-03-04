@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.SubcomposeAsyncImage
 import com.iwelogic.core_ui.Route
-import com.iwelogic.news_domain.models.News
+import com.iwelogic.news_presentation.models.News
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
@@ -121,7 +121,6 @@ fun NewsItem(news: News, onClick: (News) -> Unit) {
             },
             contentDescription = null
         )
-
         Text(
             modifier = Modifier
                 .weight(1.0f)

@@ -1,7 +1,9 @@
 package com.iwelogic.coins_data.di
 
 import com.iwelogic.coins_data.BuildConfig.BACKEND_URL
+import com.iwelogic.coins_data.BuildConfig.HISTORY_BASE_URL
 import com.iwelogic.coins_data.datasource.CoinsDataSource
+import com.iwelogic.coins_data.remote.CoinHistoryApi
 import com.iwelogic.coins_data.remote.CoinsApi
 import com.iwelogic.coins_data.repository.CoinsRepositoryImp
 import com.iwelogic.coins_domain.repository.CoinsRepository
@@ -27,6 +29,17 @@ object CoinsDataModule {
             .client(client)
             .build()
             .create(CoinsApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCoinHistoryApi(builder: Retrofit.Builder, client: OkHttpClient): CoinHistoryApi {
+        return builder
+            .baseUrl(HISTORY_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+            .create(CoinHistoryApi::class.java)
     }
 
     @Provides

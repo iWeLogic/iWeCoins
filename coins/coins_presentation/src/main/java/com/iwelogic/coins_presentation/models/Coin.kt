@@ -5,11 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Coin(
-    val priceChangePercentage24h: Double? = null,
+    val priceChangePercentage24h: Float? = null,
     val symbol: String? = null,
     val image: String? = null,
-    val priceChange24h: Double? = null,
+    val priceChange24h: Float? = null,
     val name: String? = null,
     val id: String? = null,
-    val currentPrice: Double? = null
+    val currentPrice: Float? = null
 ) : Parcelable

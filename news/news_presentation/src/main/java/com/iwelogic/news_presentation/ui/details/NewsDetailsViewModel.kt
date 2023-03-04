@@ -2,7 +2,7 @@ package com.iwelogic.news_presentation.ui.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.iwelogic.news_domain.models.News
+import com.iwelogic.news_domain.models.NewsDomain
 import com.iwelogic.news_domain.use_case.NewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -36,7 +36,7 @@ class NewsDetailsViewModel @Inject constructor(
         }
     }
 
-    fun onClickCoin(item: News) {
+    fun onClickCoin(item: NewsDomain) {
 
     }
 }

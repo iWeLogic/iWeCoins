@@ -6,6 +6,8 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,6 +21,9 @@ fun CoinDetailsScreen(
     navigate: (String) -> Unit,
     viewModel: CoinsDetailsViewModel = hiltViewModel()
 ) {
+
+    val uiState by viewModel.state.collectAsState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,16 +51,34 @@ fun CoinDetailsScreen(
             backgroundColor = MaterialTheme.colors.primary,
             contentColor = MaterialTheme.colors.onPrimary
         )
-        Box(
-            Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                text = "Coin details",
-                style = MaterialTheme.typography.h3
-            )
+
+        when (val state = uiState) {
+            is CoinDetailsState.Loading -> {
+                Box(
+                    Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
+            }
+            is CoinDetailsState.Error -> {
+                Box(
+                    Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "Error")
+                }
+            }
+            is CoinDetailsState.ScreenData -> {
+                Box(contentAlignment = Alignment.Center) {
+                    Chart(
+                        Modifier
+                            .aspectRatio(1f)
+                            .fillMaxSize(),
+                        state.coinDetails.history?.data?.map { ValueContainer(it.high ?: 0.0f, 1) } ?: ArrayList()
+                    )
+                }
+            }
         }
     }
 }

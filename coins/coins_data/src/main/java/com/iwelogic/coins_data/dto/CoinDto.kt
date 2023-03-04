@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 class CoinDto(
 
     @SerializedName("price_change_percentage_24h")
-    val priceChangePercentage24h: Double? = null,
+    val priceChangePercentage24h: Float? = null,
 
     @SerializedName("symbol")
     val symbol: String? = null,
@@ -14,7 +14,7 @@ class CoinDto(
     val image: String? = null,
 
     @SerializedName("price_change_24h")
-    val priceChange24h: Double? = null,
+    val priceChange24h: Float? = null,
 
     @SerializedName("name")
     val name: String? = null,
@@ -23,5 +23,5 @@ class CoinDto(
     val id: String? = null,
 
     @SerializedName("current_price")
-    val currentPrice: Double? = null
+    val currentPrice: Float? = null
 )

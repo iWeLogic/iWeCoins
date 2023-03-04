@@ -1,11 +1,12 @@
-package com.iwelogic.news_data.mapper
+package com.iwelogic.news_presentation.mapper
 
-import com.iwelogic.news_data.dto.NewsDto
 import com.iwelogic.news_domain.models.NewsDomain
-import com.iwelogic.news_domain.models.SourceInfoDomain
+import com.iwelogic.news_presentation.models.News
+import com.iwelogic.news_presentation.models.SourceInfo
 
-fun NewsDto.toNews(): NewsDomain {
-    return NewsDomain(
+
+fun NewsDomain.toNews(): News {
+    return News(
         id = id,
         publishedOn = publishedOn,
         imageurl = imageurl,
@@ -17,7 +18,7 @@ fun NewsDto.toNews(): NewsDomain {
         upvotes = upvotes,
         downvotes = downvotes,
         lang = lang,
-        sourceInfo = SourceInfoDomain(
+        sourceInfo = SourceInfo(
             name = sourceInfo?.name,
             lang = sourceInfo?.lang,
             img = sourceInfo?.img
